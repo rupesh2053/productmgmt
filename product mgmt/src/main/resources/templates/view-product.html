@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>product management</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	<div class = "container mt-2">
+		<div class = "row mt-4">
+			<div class = "col-md-12 col-12 mx-auto">
+				<div class = "p-2">
+					
+					<h3 class = "bg-success text-white p-1 rounded text-center">Product list</h3>
+					
+					<div class = "text-center mb-2">
+						<a th:href = "@{/add-product}" class = "btn btn-primary">Add product</a>
+						<a th:href = "@{logout}" class = "btn btn-danger">Logout</a>
+						<a th:href = "@{/user-form}" class = "btn btn-danger">Create user</a>
+					</div>
+					
+					<table class= "table table-bordered text-center">
+						<thead>
+							<tr>
+								<th>Product ID</th>
+								<th>Product Name</th>
+								<th>Product Price</th>
+								<th>Product Model</th>
+								<th>Product Made-in</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="product : ${products}">
+								<td th:text="${product.id}">Product ID</td>
+								<td th:text="${product.name}">Product Name</td>
+								<td th:text="'$'+${product.price}">Product Price</td>
+								<td th:text="${product.model}">Product Model</td>
+								<td th:text="${product.madein}">Product Made-in</td>
+								<td>
+									<a th:href = "@{'/edit/'+${product.id}}" class = "btn btn-success">Edit</a>
+									<a th:href = "@{'/delete/'+${product.id}}" class = "btn btn-danger">Delete</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
